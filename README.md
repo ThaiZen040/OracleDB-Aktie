@@ -13,3 +13,4 @@ einer geeigneten Quelle.
 - Nutze die akquirierten Daten, um statistische Analysen durchzuführen, Kennzahlen zu Rendite und Risiko
 zu berechnen und nehme geeignete Datenvisualisierungen vor.
 
+Test
