@@ -1,55 +1,145 @@
-# OracleDB-Aktie
-Aufgabe: Detailliertes Reporting einer Aktie mit Python / Uni Projekt 
+# Oracle-Aktienanalyse
 
- Deine Aufgabe ist es, die Finanzdaten eines börsennotierten Unternehmens detailliert zu
-analysieren, dabei sind die folgenden Anforderungen zu erfüllen:
+Dieses Projekt analysiert die Oracle-Aktie (`ORCL`) für den Zeitraum von 2020
+bis 2024. Das Jupyter-Notebook lädt Kurs- und Dividendendaten über Yahoo
+Finance, berechnet Rendite- und Risikokennzahlen und erstellt verschiedene
+Diagramme.
 
-- Die Analysen sollen mit Python in einem Jupyter-Notebook durchgeführt werden. In dem Notebook
-sollen der ausgeführte Quellcode und entsprechende Beschreibungen der Schritte enthalten sein.
+## Projekt starten
 
-- Wähle Dir für die Analysen selbst ein Unternehmen und beschaffe selbstständig die benötigten Daten aus
-einer geeigneten Quelle.
+### 1. Voraussetzungen
 
-- Nutze die akquirierten Daten, um statistische Analysen durchzuführen, Kennzahlen zu Rendite und Risiko
-zu berechnen und nehme geeignete Datenvisualisierungen vor.
+Für die Ausführung werden benötigt:
 
-## 📈 Interpretation der Analyseergebnisse
+- Python 3
+- eine Internetverbindung für den Abruf der Börsendaten
+- Git (optional, zum Klonen des Repositorys)
 
-### Kursentwicklung
-Der Kursverlauf der Oracle-Aktie zeigt im betrachteten Zeitraum seit 2020 insgesamt
-eine deutlich positive Entwicklung. Nach zwischenzeitlichen Schwankungen, insbesondere
-in Phasen erhöhter Marktunsicherheit, ist ein langfristiger Aufwärtstrend erkennbar.
-Dies deutet auf eine grundsätzlich stabile Marktposition des Unternehmens hin.
+### 2. Repository herunterladen
 
-Kurzfristige Rückgänge im Kursverlauf lassen sich vor allem durch allgemeine
-Marktbewegungen erklären und stellen keine nachhaltige Trendwende dar.
+Das Repository kann mit Git geklont werden:
 
----
+```bash
+git clone https://github.com/ThaiZen040/OracleDB-Aktie.git
+cd OracleDB-Aktie
+```
 
-### Renditeanalyse
-Die durchschnittliche tägliche Rendite der Oracle-Aktie ist positiv. Auf Jahresbasis
-hochgerechnet ergibt sich eine attraktive jährliche Rendite, was auf eine
-überdurchschnittliche Wertentwicklung im Vergleich zu konservativen Anlageformen
-hinweist.
+Alternativ kann das Projekt auf GitHub als ZIP-Datei heruntergeladen und
+anschließend entpackt werden.
 
-Die kumulative Rendite verdeutlicht, dass ein langfristiges Halten der Aktie im
-betrachteten Zeitraum zu einer signifikanten Wertsteigerung geführt hätte.
+### 3. Virtuelle Umgebung erstellen
 
----
+Es wird empfohlen, die benötigten Pakete in einer virtuellen Python-Umgebung
+zu installieren.
 
-### Risikoanalyse
-Die berechnete Volatilität zeigt, dass die Oracle-Aktie zwar Kursschwankungen unterliegt,
-diese jedoch im moderaten Bereich liegen. Im Vergleich zu stark wachstumsorientierten
-Technologieunternehmen weist Oracle eine eher geringere Schwankungsintensität auf.
+macOS und Linux:
 
-Die Risiko-Rendite-Struktur kann daher als ausgewogen bezeichnet werden. Das bedeutet,
-dass das erzielte Renditeniveau nicht mit einem unverhältnismäßig hohen Risiko erkauft
-wird.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
----
+Windows PowerShell:
 
-### Gesamtbewertung
-Zusammenfassend lässt sich festhalten, dass die Oracle-Aktie im untersuchten Zeitraum
-eine stabile Kursentwicklung mit moderatem Risiko aufweist. Für langfristig orientierte
-Investoren stellt die Aktie damit eine potenziell attraktive Anlage dar, insbesondere
-im Hinblick auf eine ausgewogene Balance zwischen Rendite und Risiko.
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+### 4. Abhängigkeiten installieren
+
+macOS und Linux:
+
+```bash
+python3 -m pip install --upgrade pip
+python3 -m pip install jupyter numpy pandas yfinance matplotlib
+```
+
+Windows:
+
+```powershell
+py -m pip install --upgrade pip
+py -m pip install jupyter numpy pandas yfinance matplotlib
+```
+
+### 5. Notebook öffnen
+
+macOS und Linux:
+
+```bash
+jupyter notebook oracledb.ipynb
+```
+
+Windows:
+
+```powershell
+jupyter notebook oracledb.ipynb
+```
+
+Daraufhin öffnet sich Jupyter im Browser. Dort im Menü
+**Kernel → Restart & Run All** auswählen, um die gesamte Analyse auszuführen.
+
+Alternativ lässt sich das Notebook mit JupyterLab starten:
+
+```bash
+jupyter lab oracledb.ipynb
+```
+
+Das Notebook kann auch direkt in einer Entwicklungsumgebung mit
+Jupyter-Unterstützung, beispielsweise Visual Studio Code oder PyCharm,
+geöffnet und ausgeführt werden.
+
+## Verwendete Bibliotheken
+
+| Bibliothek | Verwendung |
+|---|---|
+| `numpy` | Mathematische Berechnungen |
+| `pandas` | Verarbeitung und Auswertung der Kursdaten |
+| `yfinance` | Abruf der Kurs- und Dividendendaten |
+| `matplotlib` | Erstellung der Diagramme |
+| `jupyter` | Ausführung des Notebooks |
+
+## Inhalt des Projekts
+
+```text
+OracleDB-Aktie/
+├── oracledb.ipynb   # Vollständige Aktienanalyse
+└── README.md        # Installation und Startanleitung
+```
+
+Das Notebook untersucht unter anderem:
+
+- den Kursverlauf mit gleitenden Durchschnitten,
+- tägliche, jährliche und kumulative Renditen,
+- Volatilität und maximalen Drawdown,
+- die Sharpe Ratio,
+- die Verteilung der täglichen Renditen sowie
+- Dividenden und Dividendenrenditen.
+
+Beim Ausführen werden die aktuellen historischen Daten von Yahoo Finance
+abgerufen. Die berechneten Werte können sich daher von den bereits im Notebook
+gespeicherten Ausgaben unterscheiden.
+
+## Konfiguration anpassen
+
+Die wichtigsten Einstellungen befinden sich am Anfang von `oracledb.ipynb` in
+der Klasse `Config`:
+
+```python
+TICKER = "ORCL"
+START = "2020-01-01"
+END = "2024-12-31"
+RISK_FREE_RATE = 0.04
+TRADING_DAYS = 252
+```
+
+Über diese Werte können beispielsweise ein anderes Unternehmen, ein anderer
+Analysezeitraum oder ein anderer risikofreier Zinssatz gewählt werden.
+
+## Hinweise
+
+- Zum Laden der Börsendaten muss während der Ausführung eine
+  Internetverbindung bestehen.
+- Die erzeugten Diagramme werden im Projektordner als PNG-Dateien gespeichert.
+- Die Analyse dient ausschließlich Lehr- und Demonstrationszwecken und stellt
+  keine Anlageberatung dar.
